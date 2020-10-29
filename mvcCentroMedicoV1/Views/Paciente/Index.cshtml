@@ -1,0 +1,41 @@
+﻿
+
+@{
+    Layout = "~/Views/shared/_plantilla.cshtml";
+    ViewBag.Title = "Index" ;
+    ViewBag.TitlePag = "Lista de Pacientes";
+}
+
+<p>
+    @Html.ActionLink("Nuevo Paciente","Nuevo");
+</p>
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Id.Paciente</th>
+            <th>Nom.Paciente</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Genero</th>
+            <th>Edad</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idpaciente</td>
+                <td>@item.NomPaciente</td>
+                <td>@item.email</td>
+                <td>@item.telefono</td>
+                <td>@item.genero</td>
+                <td>@item.edad</td>
+                <td>@Html.ActionLink("Editar", "Modificar", new { id = item.idpaciente })</td>
+                <td>@Html.ActionLink("Eliminar","Borrar", new { id = item.idpaciente })</td>
+            </tr>
+        }
+    </tbody>
+</table>
